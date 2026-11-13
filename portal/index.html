@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07151d">
+  <meta name="description" content="ABYSSAL FRONTIER — Portal oficial do jogo naval de exploração. Navegue em uma demonstração 3D gratuita direto no navegador.">
+  <meta property="og:title" content="ABYSSAL FRONTIER — O oceano chama">
+  <meta property="og:description" content="Explore o Atlântico, domine o leme e descubra o desconhecido. Jogue a demonstração 3D.">
+  <title>ABYSSAL FRONTIER | Jogue no navegador</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#07141c;--ice:#e8f5f3;--muted:#a4bbbf;--accent:#b7e97a;--line:#ffffff26}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--ice);overflow-x:hidden}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer;font-family:inherit}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+    #oceanCanvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}#shade{pointer-events:none;position:fixed;inset:0;z-index:1;background:linear-gradient(90deg,rgba(4,14,21,.96) 0%,rgba(4,14,21,.7) 38%,rgba(4,14,21,.06) 78%),linear-gradient(0deg,#081720 0%,transparent 43%);transition:background .8s}body.playing #shade{background:linear-gradient(0deg,rgba(2,9,16,.27),transparent 35%)}
+    .grain{pointer-events:none;position:fixed;inset:0;z-index:4;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 150 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.2' filter='url(%23n)'/%3E%3C/svg%3E")}
+    header{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:25px max(5vw,24px);border-bottom:1px solid #ffffff24;background:linear-gradient(#04121988,transparent)}.logo{display:flex;align-items:center;gap:13px;font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:23px;letter-spacing:.12em;line-height:1}.logo-mark{height:35px;width:35px;border:1px solid #d6f9ed70;transform:rotate(45deg);display:grid;place-items:center}.logo-mark span{transform:rotate(-45deg);font-size:22px;font-weight:800;color:var(--accent)}nav{display:flex;gap:38px;align-items:center;font-size:11px;font-weight:700;letter-spacing:.22em}nav a{opacity:.82;transition:opacity .2s}nav a:hover{opacity:1;color:var(--accent)}.nav-cta{border:1px solid #cce4d480;padding:12px 18px;background:#07171b55}.nav-cta:hover{background:#b7e97a;color:#091a13}
+    #landing{position:relative;z-index:3;min-height:100vh}main.hero{padding:7vh max(5vw,24px) 9vh;min-height:calc(100vh - 87px);display:flex;flex-direction:column;justify-content:space-between;gap:25px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.3em;color:var(--accent);display:flex;align-items:center;gap:14px;text-transform:uppercase}.eyebrow:before{content:"";width:30px;height:1px;background:var(--accent)}h1{font-family:"Barlow Condensed",sans-serif;font-size:clamp(76px,11vw,190px);font-weight:900;line-height:.74;letter-spacing:-.025em;margin:26px 0 32px;text-transform:uppercase;max-width:980px;text-shadow:0 8px 45px #05131c80}h1 em{display:block;font-style:normal;color:transparent;-webkit-text-stroke:1.6px #c6e8e3;font-size:.79em;letter-spacing:.012em;margin-top:15px}.hero-copy{max-width:480px;color:#c0d3d3;line-height:1.8;font-size:15px}.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;gap:16px;min-height:57px;padding:0 26px;font-size:12px;font-weight:800;letter-spacing:.13em;border:1px solid transparent;transition:transform .2s,background .2s}.primary{background:var(--accent);color:#132719;box-shadow:0 5px 35px #b7e97a18}.primary:hover{background:#d2ffa1;transform:translateY(-3px)}.secondary{background:#05131a77;color:#effdf9;border-color:#d5f0e666}.secondary:hover{background:#ffffff18}.arrow{font-size:20px;line-height:1}.hero-foot{display:flex;gap:25px;align-items:end;justify-content:space-between}.hero-meta{display:flex;gap:46px;flex-wrap:wrap}.hero-meta div{display:grid;gap:8px}.hero-meta b{font-family:"Barlow Condensed",sans-serif;font-size:25px;letter-spacing:.04em}.hero-meta small{font-size:10px;letter-spacing:.2em;color:#a5bfc1}.scroll-hint{font-size:10px;letter-spacing:.24em;color:#a7c2c1;writing-mode:vertical-rl;display:flex;align-items:center;gap:10px}.scroll-hint:after{content:"";height:62px;width:1px;background:#d5e8db55}
+    .section{position:relative;z-index:3;background:#07151dee;border-top:1px solid #cce9dc25;padding:90px max(5vw,24px)}.section-inner{max-width:1370px;margin:auto}.kicker{color:var(--accent);font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:11px}.section h2{font-family:"Barlow Condensed",sans-serif;text-transform:uppercase;font-size:clamp(44px,5vw,74px);line-height:.93;letter-spacing:.01em;margin:18px 0}.section p{color:var(--muted);line-height:1.8;max-width:660px}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:38px}.feature{border:1px solid #d2ece624;padding:32px;min-height:235px;background:linear-gradient(145deg,#18303970,#0a182070)}.feature-icon{font-size:30px;margin-bottom:28px;color:var(--accent)}.feature h3{font-family:"Barlow Condensed",sans-serif;font-size:28px;letter-spacing:.04em;margin:0 0 10px}.feature p{font-size:13px;margin:0;line-height:1.7}.muted-pill{display:inline-block;border:1px solid #c3d8d34a;padding:6px 9px;color:#b7c9c5;font-size:9px;letter-spacing:.15em;margin-top:18px}.section-split{display:flex;gap:50px;justify-content:space-between;align-items:center;flex-wrap:wrap}.keys{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;min-width:min(100%,430px)}.key{display:flex;justify-content:space-between;gap:28px;padding:14px 18px;border:1px solid #d6e6dc25;background:#132a3180;font-size:13px}.key b{color:#d4f5bb;font-weight:700}footer{background:#061019;padding:28px max(5vw,24px);border-top:1px solid #ffffff25;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;position:relative;z-index:3;color:#9db6b7;font-size:12px}
+    #hud{display:none;position:fixed;z-index:6;inset:0;pointer-events:none}body.playing #hud{display:block}#hud button{pointer-events:auto}.hud-top{position:absolute;top:0;left:0;right:0;padding:20px 28px;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;background:linear-gradient(#06151dc9,transparent)}.hud-brand{font:800 25px "Barlow Condensed",sans-serif;letter-spacing:.1em}.hud-brand span{color:var(--accent)}.hud-sub{font:700 9px "DM Sans",sans-serif;letter-spacing:.24em;color:#b6d0cd;margin-top:4px}.top-actions{display:flex;gap:10px}.glass{background:#061621bd;border:1px solid #d6f5eb3b;backdrop-filter:blur(16px)}.icon-btn{height:42px;min-width:43px;color:#eefaf8;font-weight:800;font-size:18px}.icon-btn:hover{background:#214b50}.quest{position:absolute;top:110px;left:28px;max-width:330px;padding:21px 24px}.quest .kicker{font-size:9px}.quest strong{display:block;font-family:"Barlow Condensed",sans-serif;letter-spacing:.04em;font-size:27px;line-height:1.15;margin:9px 0}.quest p{color:#c3d7d6;line-height:1.55;font-size:12px;margin:0 0 12px}.progress{display:flex;gap:7px}.progress span{flex:1;height:4px;background:#48616a}.progress span.done{background:var(--accent)}.hud-bottom{position:absolute;bottom:25px;left:25px;right:25px;display:flex;justify-content:space-between;align-items:end;gap:20px}.mapbox{width:192px;height:192px;padding:9px;position:relative}.mapbox canvas{width:100%;height:100%;display:block;background:#0c3746;border:1px solid #bfdede24}.maptext{position:absolute;top:14px;left:18px;font-size:9px;letter-spacing:.18em;color:#bce0db}.telemetry{padding:18px 25px;min-width:210px;text-align:right}.telemetry .speed{font:800 70px/.9 "Barlow Condensed",sans-serif;letter-spacing:-.02em}.telemetry small{font-size:12px;font-weight:700;letter-spacing:.13em;color:var(--accent)}.telemetry .details{display:flex;justify-content:space-between;gap:30px;font-size:10px;letter-spacing:.12em;color:#b2cfca;margin-top:15px;border-top:1px solid #ffffff22;padding-top:12px}.hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:#e2f2ecba;background:#07151d8f;padding:9px 14px;font-size:10px;letter-spacing:.09em;white-space:nowrap}
+    #toast{position:absolute;top:105px;left:50%;transform:translate(-50%,-15px);padding:16px 25px;background:#b7e97a;color:#122617;font-weight:800;font-size:13px;letter-spacing:.08em;opacity:0;transition:opacity .25s,transform .25s;max-width:90vw;text-align:center}#toast.show{opacity:1;transform:translate(-50%,0)}#touch{display:none;position:absolute;bottom:28px;left:0;right:0;justify-content:space-between;padding:0 20px}.touch-pad{display:grid;grid-template-columns:repeat(3,50px);grid-template-rows:repeat(2,50px);gap:6px;pointer-events:auto}.touch-btn{background:#061c2caa;border:1px solid #d4efe979;color:white;border-radius:9px;font-size:23px;touch-action:none;user-select:none}.touch-btn:active,.touch-btn.holding{background:#91ca68ad;color:#06261d}.touch-w{grid-column:2;grid-row:1}.touch-a{grid-column:1;grid-row:2}.touch-s{grid-column:2;grid-row:2}.touch-d{grid-column:3;grid-row:2}
+    #dialog{display:none;position:fixed;inset:0;z-index:10;align-items:center;justify-content:center;padding:24px;background:#041018cf;backdrop-filter:blur(14px)}#dialog.open{display:flex}.dialog-card{width:min(100%,510px);background:linear-gradient(150deg,#1b363e,#0a1923);border:1px solid #d7f7df50;padding:40px}.dialog-card h2{font:900 57px/.95 "Barlow Condensed",sans-serif;margin:14px 0 22px;text-transform:uppercase}.dialog-card p{color:#c6d8d6;font-size:14px;line-height:1.8}.dialog-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.dialog-card .secondary{min-height:50px}.dialog-card .primary{min-height:50px}#loadError{display:none;position:fixed;z-index:99;inset:auto 12px 12px;background:#651f28;padding:15px;color:#fff}
+    @media(max-width:940px){nav a:not(.nav-cta){display:none}.features{grid-template-columns:1fr 1fr}.hero{padding-top:8vh!important}h1{font-size:clamp(78px,13vw,125px)}.hero-copy{max-width:430px}}
+    @media(max-width:640px){header{padding:18px 20px}.logo{font-size:18px}.logo-mark{width:28px;height:28px}.logo-mark span{font-size:18px}.nav-cta{font-size:9px;padding:10px}main.hero{padding:10vh 20px 42px!important;min-height:calc(100dvh - 68px)}h1{font-size:clamp(67px,17vw,110px);margin:24px 0 28px}h1 em{margin-top:11px}.hero-copy{font-size:13px;line-height:1.65;max-width:340px}.hero-actions .primary,.hero-actions .secondary{padding:0 19px;min-height:53px;font-size:10px}.hero-meta{gap:26px}.hero-meta b{font-size:20px}.hero-meta small{font-size:8px}.scroll-hint{display:none}.section{padding:65px 20px}.features{grid-template-columns:1fr}.feature{min-height:190px}.key{padding:12px 13px}.hud-top{padding:15px}.hud-brand{font-size:19px}.quest{left:14px;top:81px;max-width:220px;padding:13px 16px}.quest strong{font-size:19px}.quest p{font-size:10px}.quest .kicker{font-size:8px}.mapbox{width:118px;height:118px}.hud-bottom{bottom:155px;left:14px;right:14px}.telemetry{min-width:132px;padding:11px 13px}.telemetry .speed{font-size:45px}.telemetry .details{font-size:8px;gap:10px}.hint{display:none}#touch{display:flex}.dialog-card{padding:29px}.dialog-card h2{font-size:43px}#shade{background:linear-gradient(90deg,rgba(4,14,21,.9),rgba(4,14,21,.22)),linear-gradient(0deg,#081720,transparent 70%)}}
+  </style>
+</head>
+<body>
+  <canvas id="oceanCanvas" aria-label="Cenário 3D do oceano"></canvas><div id="shade"></div><div class="grain"></div>
+  <div id="landing">
+    <header>
+      <a href="#" class="logo" aria-label="Abyssal Frontier"><span class="logo-mark"><span>≈</span></span><span>ABYSSAL <span style="color:var(--accent)">FRONTIER</span></span></a>
+      <nav aria-label="Menu principal"><a href="#universo">O UNIVERSO</a><a href="#controles">CONTROLES</a><a href="https://github.com/Disous33/abyssal-frontier" target="_blank" rel="noopener">DESENVOLVIMENTO</a><a class="nav-cta" href="#" id="navPlay">JOGAR DEMO ↗</a></nav>
+    </header>
+    <main class="hero">
+      <div>
+        <div class="eyebrow">A FRONTEIRA COMEÇA NO MAR · DEMONSTRAÇÃO 3D</div>
+        <h1>ABYSSAL<em>FRONTIER.</em></h1>
+        <p class="hero-copy">O horizonte não é o fim do mundo. É o começo da sua história. Assuma o comando, enfrente as ondas do Atlântico e descubra o que existe além da costa.</p>
+        <div class="hero-actions"><button class="primary" id="playBtn">INICIAR EXPEDIÇÃO <span class="arrow">↗</span></button><a class="secondary" href="#universo">CONHECER O JOGO <span class="arrow">↓</span></a></div>
+      </div>
+      <div class="hero-foot"><div class="hero-meta"><div><b>3D</b><small>EXPLORAÇÃO NAVAL</small></div><div><b>PC + MOBILE</b><small>JOGUE NO NAVEGADOR</small></div><div><b>GRÁTIS</b><small>DEMONSTRAÇÃO</small></div></div><div class="scroll-hint">ROLE PARA EXPLORAR</div></div>
+    </main>
+    <section id="universo" class="section"><div class="section-inner"><div class="kicker">01 / O UNIVERSO</div><h2>UM OCEANO DE<br>POSSIBILIDADES.</h2><p>ABYSSAL FRONTIER é um projeto independente de exploração naval em 3D. Neste portal você pode testar uma demonstração de navegação com embarcação controlável e uma missão de reconhecimento marítimo. Os sistemas da versão completa ainda estão em desenvolvimento.</p><div class="features">
+      <div class="feature"><div class="feature-icon">◈</div><h3>NAVEGAÇÃO 3D</h3><p>Comande seu barco, sinta a inércia do leme, explore uma cena oceânica dinâmica e descubra pontos de interesse.</p><span class="muted-pill">DISPONÍVEL NA DEMO</span></div>
+      <div class="feature"><div class="feature-icon">⌁</div><h3>MISSÃO NO ATLÂNTICO</h3><p>Deixe a área portuária e localize três sinais marítimos para concluir a primeira expedição.</p><span class="muted-pill">DISPONÍVEL NA DEMO</span></div>
+      <div class="feature"><div class="feature-icon">◇</div><h3>MUNDO EM EXPANSÃO</h3><p>Portos, economia, pesca, mergulho e aventuras maiores fazem parte dos objetivos do jogo completo.</p><span class="muted-pill">EM DESENVOLVIMENTO</span></div>
+    </div></div></section>
+    <section id="controles" class="section"><div class="section-inner section-split"><div><div class="kicker">02 / COMANDE SUA EXPEDIÇÃO</div><h2>O LEME<br>ESTÁ EM SUAS MÃOS.</h2><p>Navegue com teclado no computador ou use os controles na tela do celular. A demonstração salva apenas suas preferências visuais neste dispositivo.</p><button class="primary" id="playBtn2">JOGAR GRATUITAMENTE <span class="arrow">↗</span></button></div><div class="keys"><div class="key"><span>Acelerar</span><b>W / ↑</b></div><div class="key"><span>Frear / ré</span><b>S / ↓</b></div><div class="key"><span>Leme esquerda</span><b>A / ←</b></div><div class="key"><span>Leme direita</span><b>D / →</b></div><div class="key"><span>Pausar</span><b>ESC</b></div><div class="key"><span>Câmera</span><b>SCROLL</b></div></div></div></section>
+    <footer><div>© 2026 ABYSSAL FRONTIER · PROJETO INDEPENDENTE</div><div>DEMONSTRAÇÃO TÉCNICA · NÃO REPRESENTA A VERSÃO COMPLETA</div><a target="_blank" rel="noopener" href="https://github.com/Disous33/abyssal-frontier">GITHUB ↗</a></footer>
+  </div>
+  <div id="hud" aria-live="polite">
+    <div class="hud-top"><div><div class="hud-brand">ABYSSAL <span>FRONTIER</span></div><div class="hud-sub">DEMO · SETOR COSTEIRO · ATLÂNTICO</div></div><div class="top-actions"><button id="dayBtn" class="glass icon-btn" title="Alternar dia/noite" aria-label="Alternar dia ou noite">☀</button><button id="soundBtn" class="glass icon-btn" title="Som do oceano" aria-label="Alternar som">♫</button><button id="pauseBtn" class="glass icon-btn" title="Pausar" aria-label="Pausar">Ⅱ</button></div></div>
+    <div class="quest glass"><span class="kicker">MISSÃO 01 · RECONHECIMENTO</span><strong>O SINAL DO ATLÂNTICO</strong><p>Encontre os três sinais luminosos. Aproxime sua embarcação para registrá-los.</p><div id="progress" class="progress"><span></span><span></span><span></span></div></div>
+    <div id="toast"></div>
+    <div class="hud-bottom"><div class="mapbox glass"><canvas id="minimap" width="174" height="174"></canvas><span class="maptext">CARTA NÁUTICA</span></div><div class="telemetry glass"><div><span id="speed" class="speed">00</span> <small>KN</small></div><div class="details"><span>RUMO <b id="heading">000°</b></span><span>CASCO <b id="hull">100%</b></span></div></div></div>
+    <div class="hint">W / S ACELERAR · A / D LEME · ESC PAUSAR · RODA DO MOUSE CÂMERA</div>
+    <div id="touch"><div class="touch-pad"><button data-key="w" class="touch-btn touch-w">↑</button><button data-key="a" class="touch-btn touch-a">←</button><button data-key="s" class="touch-btn touch-s">↓</button><button data-key="d" class="touch-btn touch-d">→</button></div><div style="display:flex;flex-direction:column;justify-content:end;gap:8px"><button id="mobilePause" class="glass icon-btn">Ⅱ</button></div></div>
+  </div>
+  <div id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="dialog-card"><span id="dialogKicker" class="kicker">EXPEDIÇÃO PAUSADA</span><h2 id="dialogTitle">PAUSA.</h2><p id="dialogText">O mar estará aqui quando você voltar.</p><div class="dialog-actions"><button id="resumeBtn" class="primary">CONTINUAR <span class="arrow">↗</span></button><button id="restartBtn" class="secondary">REINICIAR</button><button id="menuBtn" class="secondary">MENU PRINCIPAL</button></div></div></div>
+  <div id="loadError">Não foi possível carregar o motor 3D. Verifique a conexão e atualize a página.</div>
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.187.0/build/three.module.js";
+    const $ = id => document.getElementById(id);
+    const body=document.body, canvas=$("oceanCanvas");
+    let phase="menu", paused=false, night=false, seconds=0, toastTimer=0, cameraDistance=16;
+    const pressed={w:false,a:false,s:false,d:false};
+    const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,powerPreference:"high-performance"});
+    renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.7));
+    renderer.setSize(innerWidth,innerHeight);
+    renderer.shadowMap.enabled=false;
+    renderer.outputColorSpace=THREE.SRGBColorSpace;
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure=1.25;
+    const scene=new THREE.Scene();
+    scene.background=new THREE.Color(0x86bacc);
+    scene.fog=new THREE.FogExp2(0x86bacc,.0026);
+    const camera=new THREE.PerspectiveCamera(64,innerWidth/innerHeight,.1,1100);
+    camera.position.set(20,13,29);
+    const sun=new THREE.DirectionalLight(0xffe7b1,2.9);sun.position.set(-70,90,-140);scene.add(sun);
+    const ambient=new THREE.HemisphereLight(0xc0e7ff,0x17485a,2.3);scene.add(ambient);
+    const sea=new THREE.Mesh(new THREE.PlaneGeometry(1300,1300,160,160),new THREE.ShaderMaterial({
+      uniforms:{uTime:{value:0},uDark:{value:0}},
+      vertexShader:"uniform float uTime; varying vec3 vN; varying vec3 vP; float f(vec2 p){return .28*sin(p.x*.11+uTime*1.38)+.19*sin(p.y*.15-uTime*1.1)+.1*sin((p.x+p.y)*.32+uTime*1.8);} void main(){vec3 p=position; p.z=f(p.xy); float e=.22; float dx=(f(p.xy+vec2(e,0.))-f(p.xy-vec2(e,0.)))/(e*2.);float dy=(f(p.xy+vec2(0.,e))-f(p.xy-vec2(0.,e)))/(e*2.);vN=normalize(mat3(modelMatrix)*vec3(-dx,-dy,1.));vec4 world=modelMatrix*vec4(p,1.);vP=world.xyz;gl_Position=projectionMatrix*viewMatrix*world;}",
+      fragmentShader:"uniform float uTime; uniform float uDark; varying vec3 vN; varying vec3 vP; void main(){vec3 N=normalize(vN);vec3 L=normalize(vec3(-.45,.8,-.48));float lit=max(dot(N,L),.0);float shine=pow(max(dot(reflect(-L,N),normalize(cameraPosition-vP)),0.),55.);float ripple=sin(vP.x*.95+vP.z*.79+uTime*2.3)*sin(vP.z*.64-vP.x*.54-uTime*1.4);vec3 deep=vec3(.014,.19,.26);vec3 aqua=vec3(.035,.34,.41);vec3 color=mix(deep,aqua,.38+lit*.38)+vec3(.11,.2,.19)*shine*.8+vec3(.025)*max(ripple,.0);float f=1.-exp(-.0019*length(cameraPosition-vP));color=mix(color,vec3(.53,.73,.8),min(f,.65));color=mix(color,color*.24,uDark);gl_FragColor=vec4(color,1.);}",
+      side:THREE.DoubleSide
+    }));
+    sea.rotation.x=-Math.PI/2;sea.position.y=-.45;scene.add(sea);
+    const mat=(c,r=.8,m=.0)=>new THREE.MeshStandardMaterial({color:c,roughness:r,metalness:m});
+    const hullMat=mat(0x203e4c,.45,.2), trimMat=mat(0xd4e4df,.7), wood=mat(0x8b6c4d,.8), gold=mat(0xeeb56c,.5,.35), green=mat(0x426b4e,.95), sand=mat(0xb4a67c,1), stone=mat(0x647274,1), red=mat(0xbb503a,.7);
+    function mesh(g,m,parent,x=0,y=0,z=0){const o=new THREE.Mesh(g,m);o.position.set(x,y,z);parent.add(o);return o}
+    function box(parent,w,h,d,m,x,y,z){return mesh(new THREE.BoxGeometry(w,h,d),m,parent,x,y,z)}
+    function cylinder(parent,r1,r2,h,m,x,y,z,n=12){return mesh(new THREE.CylinderGeometry(r1,r2,h,n),m,parent,x,y,z)}
+    function makeBoat(scale=1){
+      const group=new THREE.Group();const hull=new THREE.Group();group.add(hull);
+      const v=[0,-3.25,1.08,-2.5,1.47,-.9,1.44,2.3,.85,2.95,-.85,2.95,-1.44,2.3,-1.47,-.9,-1.08,-2.5];
+      const verts=[],indices=[];const count=v.length/2;
+      for(let i=0;i<count;i++){verts.push(v[i*2],.4,v[i*2+1]);verts.push(v[i*2]*.68,-.52,v[i*2+1]*.82)}
+      for(let i=0;i<count;i++){const j=(i+1)%count;indices.push(i*2,j*2,i*2+1,j*2,j*2+1,i*2+1)}
+      for(let i=1;i<count-1;i++)indices.push(0,i*2,(i+1)*2);
+      const geo=new THREE.BufferGeometry();geo.setAttribute("position",new THREE.Float32BufferAttribute(verts,3));geo.setIndex(indices);geo.computeVertexNormals();
+      mesh(geo,hullMat,hull);box(hull,2.35,.12,3.8,wood,0,.46,.3);
+      box(hull,1.65,.84,1.45,trimMat,0,.91,1.35);
+      box(hull,1.29,.28,.04,mat(0x142d3c,.12,.65),0,1.03,.58);
+      box(hull,1.32,.24,.04,mat(0x142d3c,.12,.65),0,1.06,2.1);
+      box(hull,1.87,.12,1.65,hullMat,0,1.35,1.35);
+      for(const x of [-1,1]){for(const z of [-1.4,.2,2])cylinder(hull,.075,.075,.35,gold,x,.63,z,6)}
+      const mast=cylinder(hull,.087,.12,7,wood,0,3.7,-.35,10);mast.rotation.z=.03;
+      const sailMat=new THREE.MeshStandardMaterial({color:0xf4eedc,side:THREE.DoubleSide,roughness:.95});
+      const sailGeo=new THREE.BufferGeometry();sailGeo.setAttribute("position",new THREE.Float32BufferAttribute([.08,6.88,-.35,.12,1.1,-.34,3.1,1.35,-.36],3));sailGeo.computeVertexNormals();
+      mesh(sailGeo,sailMat,hull);
+      const jib=new THREE.BufferGeometry();jib.setAttribute("position",new THREE.Float32BufferAttribute([0,6.5,-.39,.04,1.1,-2.65,-1.58,1.16,-2.57],3));jib.computeVertexNormals();mesh(jib,sailMat,hull);
+      box(hull,3.15,.1,.1,wood,1.55,1.35,-.35);
+      cylinder(hull,.38,.44,.17,gold,0,1.5,1.4,16);
+      const flag=box(hull,.7,.33,.025,red,.39,7.13,-.4);
+      group.scale.setScalar(scale);group.userData.flag=flag;
+      return group;
+    }
+    const boat=makeBoat();scene.add(boat);const state={x:0,z:8,heading:0,speed:0,hull:100,found:0};
+    const signals=[{x:25,z:-66},{x:105,z:-148},{x:-17,z:-237}];
+    function makeBuoy(s,i){
+      const root=new THREE.Group();root.position.set(s.x,0,s.z);
+      cylinder(root,1,.85,1.4,red,0,.27,0);cylinder(root,1.12,1.16,.25,mat(0xe4d8a9),0,.6,0);
+      cylinder(root,.07,.07,2.5,gold,0,1.8,0);
+      const bulb=mesh(new THREE.SphereGeometry(.42,12,8),new THREE.MeshStandardMaterial({color:0xb7e97a,emissive:0xa1ea63,emissiveIntensity:2}),root,0,3.16,0);
+      const ring=mesh(new THREE.TorusGeometry(4.7,.085,5,64),new THREE.MeshBasicMaterial({color:0xb7e97a,transparent:true,opacity:.56}),root,0,.28,0);ring.rotation.x=-Math.PI/2;
+      root.userData={bulb,ring,index:i};scene.add(root);return root;
+    }
+    const markers=signals.map(makeBuoy);
+    const obstacles=[];
+    function makeIsland(x,z,r){const root=new THREE.Group();root.position.set(x,-1.2,z);scene.add(root);
+      const base=mesh(new THREE.SphereGeometry(1,32,20),sand,root);base.scale.set(r,5,r);
+      const hill=mesh(new THREE.SphereGeometry(1,20,14),green,root,-r*.13,2,-r*.12);hill.scale.set(r*.81,r*.28,r*.75);
+      for(let i=0;i<14;i++){const a=i*2.4,dist=(.2+(i%5)*.115)*r,tx=Math.cos(a)*dist,tz=Math.sin(a)*dist;const tr=cylinder(root,.18,.33,1.9,wood,tx,4.7,tz,6);const crown=mesh(new THREE.ConeGeometry(1.35,3.4,7),green,root,tx,7.2,tz);crown.rotation.y=a;}
+      obstacles.push({x,z,r:r*.88});
+    }
+    makeIsland(-62,32,38);makeIsland(170,-135,27);makeIsland(-103,-174,29);makeIsland(115,80,36);
+    function harbor(){
+      const g=new THREE.Group();scene.add(g);
+      box(g,18,2.5,8,stone,-23,0,10);
+      for(const z of [0,10,20]){box(g,21,.75,5,wood,-13,.45,z);for(const x of [-21,-8])box(g,.6,4,.65,wood,x,-1.5,z)}
+      box(g,20,8,12,mat(0x6b7774),-45,4.7,13);
+      const roof=box(g,21,2,14,mat(0x9b5b43),-45,9.2,13);
+      for(const xx of [-50,-45,-40])box(g,2.2,2.3,.09,mat(0xe4bb77,.3,.2),xx,5.1,6.95);
+      const tower=cylinder(g,2.1,2.9,13,mat(0xf1ebd7),-42,7,-12);
+      cylinder(g,2.7,2.7,.55,red,-42,14,-12);
+      const light=mesh(new THREE.SphereGeometry(1,12,8),new THREE.MeshStandardMaterial({color:0xfff1ab,emissive:0xffd566,emissiveIntensity:1.9}),g,-42,15.3,-12);
+      const pylon=box(g,.7,18,.7,gold,-29,9,-3);box(g,12,.45,.55,gold,-24,17,-3);
+      const hook=box(g,.12,7,.12,stone,-19,13,-3);hook.rotation.z=.02;
+      return light;
+    }
+    const lighthouse=harbor();
+    for(let i=0;i<5;i++){const p=makeBoat(.65);p.position.set(42+i*33,0,-36-i*50);p.rotation.y=(i+1)*.64;scene.add(p);p.userData.npcIndex=i}
+    const stars=new THREE.Group();scene.add(stars);
+    const starMat=new THREE.MeshBasicMaterial({color:0xf6f8e7});
+    for(let i=0;i<75;i++){const a=i*2.399,dist=250+((i*73)%210);const y=70+((i*37)%180);mesh(new THREE.SphereGeometry(.35,4,4),starMat,stars,Math.sin(a)*dist,y,Math.cos(a)*dist)}
+    const music={ctx:null,src:null,enabled:false};
+    function soundSet(value){music.enabled=value;$("soundBtn").textContent=value?"♪":"♫";
+      if(!value){if(music.src){music.src.stop();music.src.disconnect();music.src=null}return}
+      try{const C=window.AudioContext||window.webkitAudioContext;music.ctx=music.ctx||new C();music.ctx.resume();const b=music.ctx.createBuffer(1,music.ctx.sampleRate*3,music.ctx.sampleRate),d=b.getChannelData(0);let k=0;for(let i=0;i<d.length;i++){k=(k*.985)+(Math.random()-.5)*.015;d[i]=k*.6}const s=music.ctx.createBufferSource(),low=music.ctx.createBiquadFilter(),gain=music.ctx.createGain();low.type="lowpass";low.frequency.value=290;gain.gain.value=.18;s.buffer=b;s.loop=true;s.connect(low);low.connect(gain);gain.connect(music.ctx.destination);s.start();music.src=s}catch(e){music.enabled=false}
+    }
+    function showToast(message){const t=$("toast");t.textContent=message;t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),2600)}
+    function updateProgress(){[...$("progress").children].forEach((el,i)=>el.classList.toggle("done",i<state.found))}
+    function reset(){Object.assign(state,{x:0,z:8,heading:0,speed:0,hull:100,found:0});markers.forEach(m=>m.visible=true);updateProgress();paused=false;seconds=0;for(const k in pressed)pressed[k]=false}
+    function start(){reset();phase="play";body.classList.add("playing");$("landing").style.display="none";$("dialog").classList.remove("open");showToast("EXPEDIÇÃO INICIADA — ENCONTRE OS SINAIS")}
+    function menu(){phase="menu";paused=false;body.classList.remove("playing");$("landing").style.display="";$("dialog").classList.remove("open");window.scrollTo(0,0);for(const k in pressed)pressed[k]=false}
+    function dialog(kind){paused=true;phase="paused";$("dialog").classList.add("open");$("dialogKicker").textContent=kind==="complete"?"MISSÃO CONCLUÍDA":kind==="lost"?"EMBARCAÇÃO AVARIADA":"EXPEDIÇÃO PAUSADA";$("dialogTitle").textContent=kind==="complete"?"VOCÊ CONSEGUIU!":kind==="lost"?"FIM DA VIAGEM":"PAUSA."; $("dialogText").textContent=kind==="complete"?"Os três sinais foram registrados. O Atlântico ainda guarda segredos. Obrigado por testar a demonstração!":kind==="lost"?"O casco não resistiu aos impactos. Tente novamente e mantenha distância das ilhas.":"O mar estará aqui quando você voltar."; $("resumeBtn").style.display=kind==="pause"?"":"none"}
+    function pause(){if(phase==="play")dialog("pause");else if(phase==="paused"){phase="play";paused=false;$("dialog").classList.remove("open")}}
+    $("playBtn").onclick=start;$("playBtn2").onclick=start;$("navPlay").onclick=e=>{e.preventDefault();start()};
+    $("pauseBtn").onclick=pause;$("mobilePause").onclick=pause;$("resumeBtn").onclick=pause;$("restartBtn").onclick=start;$("menuBtn").onclick=menu;
+    $("dayBtn").onclick=()=>{night=!night;$("dayBtn").textContent=night?"☾":"☀";showToast(night?"NAVEGAÇÃO NOTURNA":"NAVEGAÇÃO DIURNA")};
+    $("soundBtn").onclick=()=>soundSet(!music.enabled);
+    function normalizeKey(k){k=k.toLowerCase();return k==="arrowup"?"w":k==="arrowdown"?"s":k==="arrowleft"?"a":k==="arrowright"?"d":k}
+    window.addEventListener("keydown",e=>{const k=normalizeKey(e.key);if(["w","a","s","d","escape"," "].includes(k)&&phase!=="menu")e.preventDefault();if(k==="escape"){if(!e.repeat)pause();return}if(Object.hasOwn(pressed,k))pressed[k]=true});
+    window.addEventListener("keyup",e=>{const k=normalizeKey(e.key);if(Object.hasOwn(pressed,k))pressed[k]=false});
+    window.addEventListener("blur",()=>{for(const k in pressed)pressed[k]=false});
+    document.querySelectorAll("[data-key]").forEach(btn=>{const k=btn.dataset.key;btn.addEventListener("pointerdown",e=>{e.preventDefault();pressed[k]=true;btn.classList.add("holding");btn.setPointerCapture(e.pointerId)});for(const evt of ["pointerup","pointercancel","lostpointercapture"])btn.addEventListener(evt,()=>{pressed[k]=false;btn.classList.remove("holding")})});
+    window.addEventListener("wheel",e=>{if(phase==="play")cameraDistance=THREE.MathUtils.clamp(cameraDistance+Math.sign(e.deltaY)*1.3,9,27)},{passive:true});
+    window.addEventListener("resize",()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.7))});
+    const map=$("minimap").getContext("2d");let last=performance.now(),uiTime=0;
+    function heightAt(x,z,t){return .28*Math.sin(x*.11+t*1.38)+.19*Math.sin(-z*.15-t*1.1)+.1*Math.sin((x-z)*.32+t*1.8)}
+    function drawMap(){
+      const w=174,h=174,s=1/2.6;map.clearRect(0,0,w,h);map.fillStyle="#0a3545";map.fillRect(0,0,w,h);
+      map.strokeStyle="#4e7c844f";map.lineWidth=.7;for(let i=0;i<174;i+=22){map.beginPath();map.moveTo(i,0);map.lineTo(i,174);map.moveTo(0,i);map.lineTo(174,i);map.stroke()}
+      const proj=(x,z)=>[87+(x-state.x)*s,87+(z-state.z)*s];
+      obstacles.forEach(o=>{const p=proj(o.x,o.z);map.fillStyle="#638a6b";map.beginPath();map.arc(p[0],p[1],o.r*s,0,Math.PI*2);map.fill()});
+      markers.forEach((m,i)=>{if(!m.visible)return;const p=proj(signals[i].x,signals[i].z);map.fillStyle="#ccf88c";map.beginPath();map.arc(p[0],p[1],3,0,7);map.fill()});
+      map.save();map.translate(87,87);map.rotate(-state.heading);map.fillStyle="#fff9e5";map.beginPath();map.moveTo(0,-9);map.lineTo(5,7);map.lineTo(0,4);map.lineTo(-5,7);map.closePath();map.fill();map.restore();
+    }
+    function update(dt,t){
+      if(phase!=="play")return;
+      const power=(pressed.w?1:0)-(pressed.s?1:0);
+      state.speed+=(power>0?5.6:power<0?-8:-state.speed*.85)*dt;
+      state.speed=THREE.MathUtils.clamp(state.speed,-3.2,14);
+      if(!power)state.speed*=Math.exp(-.35*dt);
+      const steer=(pressed.d?1:0)-(pressed.a?1:0);
+      state.heading+=steer*dt*(.22+Math.min(Math.abs(state.speed)/14,1)*.43)*(state.speed>=0?1:-1);
+      state.x+=Math.sin(state.heading)*state.speed*dt;state.z-=Math.cos(state.heading)*state.speed*dt;
+      for(const o of obstacles){const dx=state.x-o.x,dz=state.z-o.z,dist=Math.hypot(dx,dz);if(dist<o.r+3.5){const old=state.speed;state.speed=-(old*.18);const safe=dist||1;state.x=o.x+dx/safe*(o.r+3.6);state.z=o.z+dz/safe*(o.r+3.6);if(Math.abs(old)>1){state.hull=Math.max(0,state.hull-Math.abs(old)*1.7);showToast("ATENÇÃO: COLISÃO COM A COSTA")}}}
+      for(let i=0;i<signals.length;i++)if(markers[i].visible&&Math.hypot(state.x-signals[i].x,state.z-signals[i].z)<8){markers[i].visible=false;state.found++;updateProgress();showToast("SINAL "+state.found+"/3 REGISTRADO");if(state.found===3){dialog("complete")}}
+      if(state.hull===0)dialog("lost");
+      seconds+=dt;
+    }
+    function render(t){
+      const dt=Math.min(.05,(t-last)/1000);last=t;const sec=t*.001;
+      update(dt,sec);
+      const seaT=sec;sea.material.uniforms.uTime.value=seaT;
+      sea.material.uniforms.uDark.value=THREE.MathUtils.lerp(sea.material.uniforms.uDark.value,night?1:0,dt*1.1);
+      const bg=new THREE.Color(night?0x102b45:0x86bacc);scene.background.lerp(bg,.022);scene.fog.color.copy(scene.background);
+      ambient.intensity=THREE.MathUtils.lerp(ambient.intensity,night?.65:2.3,.024);
+      sun.intensity=THREE.MathUtils.lerp(sun.intensity,night?.26:2.9,.02);
+      stars.visible=night;
+      const y=heightAt(state.x,state.z,seaT);
+      boat.position.set(state.x,.15+y*.65,state.z);
+      boat.rotation.set(Math.sin(sec*1.15)*.027,-state.heading,Math.sin(sec*1.55)*.05+((pressed.a?1:0)-(pressed.d?1:0))*.08);
+      boat.userData.flag.rotation.y=Math.sin(sec*3)*.18;
+      markers.forEach((m,i)=>{m.position.y=heightAt(signals[i].x,signals[i].z,sec)*.6;m.userData.bulb.scale.setScalar(1+Math.sin(sec*3+i)*.13);m.userData.ring.rotation.z=sec*.22});
+      lighthouse.material.emissiveIntensity=night?4:1.9;
+      const playing=phase!=="menu";
+      let goal;
+      if(playing){const behind=new THREE.Vector3(-Math.sin(state.heading)*cameraDistance,cameraDistance*.43,Math.cos(state.heading)*cameraDistance);goal=new THREE.Vector3(state.x,2.4,state.z).add(behind)}
+      else{const orbit=sec*.06;goal=new THREE.Vector3(state.x+Math.sin(orbit)*24,11,state.z+Math.cos(orbit)*24)}
+      camera.position.lerp(goal,Math.min(1,dt*(playing?3.2:.65)));
+      const look=new THREE.Vector3(state.x,playing?2.3:2.8,state.z-(playing?5:0));camera.lookAt(look);
+      renderer.render(scene,camera);
+      if(playing){uiTime+=dt;if(uiTime>.12){uiTime=0;$("speed").textContent=String(Math.round(Math.abs(state.speed)*1.95)).padStart(2,"0");$("heading").textContent=String((Math.round(THREE.MathUtils.euclideanModulo(state.heading*180/Math.PI,360)))).padStart(3,"0")+"°";$("hull").textContent=Math.round(state.hull)+"%";drawMap()}}
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+  </script>
+  <script>window.addEventListener("error",function(e){if(e.message&&(/module|fetch|import|THREE|Failed to resolve/i).test(e.message))document.getElementById("loadError").style.display="block"});window.addEventListener("unhandledrejection",function(){document.getElementById("loadError").style.display="block"});</script>
+</body>
+</html>
