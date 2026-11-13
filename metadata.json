@@ -1,0 +1,6 @@
+{
+  "name": "Abyssal Frontier",
+  "description": "Advanced Naval Physics Lab & 3D Sailing Simulator with Gerstner waves, 6-DOF Rapier hydrodynamics, aerodynamic sails, XPBD cloth, dynamic weather, optional geolocation, and offline persistence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
