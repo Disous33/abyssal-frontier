@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#071520"/>
+  <circle cx="256" cy="256" r="196" fill="none" stroke="#1b4d63" stroke-width="6"/>
+  <circle cx="256" cy="256" r="164" fill="none" stroke="#d99b26" stroke-width="3" stroke-dasharray="10 14"/>
+  <!-- Compass cardinal ticks -->
+  <path d="M256 44 L256 76 M256 436 L256 468 M44 256 L76 256 M436 256 L468 256" stroke="#d99b26" stroke-width="6" stroke-linecap="round"/>
+  <!-- Stylized Mainsail & Jib -->
+  <path d="M250 104 L250 326 L362 310 Z" fill="#f1f5f9"/>
+  <path d="M236 132 L236 318 L148 312 Z" fill="#cbd5e1"/>
+  <!-- Hull silhouette -->
+  <path d="M120 338 L392 338 L364 374 C312 388 200 388 148 374 Z" fill="#0f3d52" stroke="#d99b26" stroke-width="5"/>
+  <!-- Waterline wave -->
+  <path d="M92 394 Q174 374 256 394 T420 394" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round"/>
+</svg>

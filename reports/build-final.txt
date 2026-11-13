@@ -1,0 +1,50 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> abyssal-frontier@0.0.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 1733 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                                          0.57 kB
+dist/index.html                                                    1.97 kB │ gzip:     0.87 kB
+dist/assets/plus-jakarta-sans-latin-400-normal-Dhut76fR.woff2     11.81 kB
+dist/assets/plus-jakarta-sans-latin-600-normal-DLTa1BUW.woff2     12.18 kB
+dist/assets/plus-jakarta-sans-latin-500-normal-Bf-nb4oT.woff2     12.31 kB
+dist/assets/outfit-latin-500-normal-DKnIMDSk.woff2                13.52 kB
+dist/assets/outfit-latin-700-normal-Cu9v6i1X.woff2                14.06 kB
+dist/assets/outfit-latin-600-normal-B7SfZ07L.woff2                14.14 kB
+dist/assets/plus-jakarta-sans-latin-400-normal-BDKaGhyp.woff      15.72 kB
+dist/assets/plus-jakarta-sans-latin-600-normal-BR_Ojra4.woff      16.08 kB
+dist/assets/plus-jakarta-sans-latin-500-normal-DYtqi0QS.woff      16.12 kB
+dist/assets/outfit-latin-500-normal-ClnHRwRh.woff                 17.68 kB
+dist/assets/outfit-latin-700-normal-D4itBLBr.woff                 18.34 kB
+dist/assets/outfit-latin-600-normal-BEfTtDA7.woff                 18.41 kB
+dist/assets/jetbrains-mono-latin-400-normal-V6pRDFza.woff2        21.16 kB
+dist/assets/jetbrains-mono-latin-500-normal-BWZEU5yA.woff2        21.83 kB
+dist/assets/jetbrains-mono-latin-600-normal-C8RAYTDA.woff2        21.86 kB
+dist/assets/jetbrains-mono-latin-400-normal-6-qcROiO.woff         27.49 kB
+dist/assets/jetbrains-mono-latin-600-normal-BfsvjouI.woff         28.18 kB
+dist/assets/jetbrains-mono-latin-500-normal-CJOVTJB7.woff         28.20 kB
+dist/assets/index-Ca2QFo0b.css                                    48.02 kB │ gzip:     8.86 kB
+dist/assets/rolldown-runtime-XKyaHtl9.js                           0.72 kB │ gzip:     0.42 kB
+dist/assets/workbox-window.prod.es5-Bd17z0YL.js                    5.65 kB │ gzip:     2.20 kB
+dist/assets/three-Bx1WUM1y.js                                    615.39 kB │ gzip:   153.61 kB
+dist/assets/index-RgdVtlom.js                                    703.03 kB │ gzip:   206.31 kB
+dist/assets/rapier-8Y7Ja17T.js                                 4,332.90 kB │ gzip: 1,669.35 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 480ms
+
+PWA v2.0.0
+mode      generateSW
+precache  36 entries (5915.02 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-9c191d2f.js

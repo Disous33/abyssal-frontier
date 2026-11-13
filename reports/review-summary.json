@@ -1,0 +1,17 @@
+{
+  "source_archive": "abyssal-frontier.zip",
+  "runtime": "Node.js v24.22.1",
+  "existing_suite_passed": 14,
+  "regressions_passed": 10,
+  "total_passed": 24,
+  "typecheck": "passed",
+  "clean_install": "passed",
+  "production_build": "passed",
+  "regressions_before_fixes": {
+    "passed": 0,
+    "failed": 10
+  },
+  "browser_graphics": "not executed",
+  "real_geolocation": "not executed; synthetic tests only",
+  "browser_offline": "not executed; production cache generated"
+}

@@ -1,0 +1,709 @@
+✖ save rejects unknown future versions rather than silently downgrading them (5.753597ms)
+✖ save fills incomplete owned vessel conditions and clamps upgrade values (4.939884ms)
+✖ save excludes malformed catches and prevents NaN progression/submarine values (0.507413ms)
+✖ save keeps only catalog inventory items with positive integer quantities (1.021555ms)
+✖ underwater saves resume swimming instead of walking below sea level (0.473651ms)
+✖ geolocation ignores a delayed success after tracking is stopped (0.645791ms)
+✖ synchronous permission denial also clears watch ID zero (0.415425ms)
+✖ regional world does not contact map servers without explicit opt-in (42.220423ms)
+✖ floating origin keeps global sector keys stable instead of loading duplicate regions (15.160634ms)
+✖ pending map responses cannot resurrect geometry after disposal (17.173109ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 0
+ℹ fail 10
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 543.840362
+
+✖ failing tests:
+
+test at src/tests/regressions.test.ts:1:1046
+✖ save rejects unknown future versions rather than silently downgrading them (5.753597ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   activeVesselId: 'vessel_aster_starter',
+  +   batteryPct: 98,
+  +   chapterTitle: 'Capítulo 1–2 · Vida Marinha, Submersíveis & Piratas',
+  +   collectedUnderwaterIds: [],
+  +   controlMode: 'on_foot',
+  +   economy: {
+  +     credits: 450,
+  +     equippedIds: [],
+  +     inventory: [
+  +       {
+  +         itemId: 'equip_repair_kit',
+  +         quantity: 1
+  +       }
+  +     ],
+  +     maxCargoKg: 120,
+  +     upgrades: {
+  +       cargoHoldLevel: 1,
+  +       engineLevel: 1,
+  +       hullArmorLevel: 1,
+  +       sailRigLevel: 1
+  +     }
+  +   },
+  +   fishingCatches: [],
+  +   fishingTotalCaught: 0,
+  +   fishingTotalSoldCr: 0,
+  +   fuelPct: 100,
+  +   missions: [
+  +     {
+  +       category: 'entrega',
+  +       chapter: 1,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Comandante Helena Vance',
+  +       id: 'm01_entrega_boia',
+  +       objectiveText: 'Aceite a missão na Capitania ou no Quadro de Missões do cais.',
+  +       order: 1,
+  +       requiredMissionIds: [],
+  +       returnToPortRequired: true,
+  +       rewardCredits: 320,
+  +       status: 'available',
+  +       summary: 'A Boia de Sinalização da Barra sofreu perda de telemetria. Leve as peças de reposição da Capitania até a saída do canal do Porto de Santos e retorne ao cais.',
+  +       title: 'Cap. 1.1 · Suprimentos da Barra',
+  +       unlocksMissionIds: [
+  +         'm02_socorro_canal'
+  +       ],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           id: 'wp_boia_barra',
+  +           label: 'Boia da Barra (Saída do Canal)',
+  +           radiusM: 32,
+  +           requiresCargoId: 'cargo_beacon_parts',
+  +           x: 95,
+  +           z: 340
+  +         }
+  +       ]
+  +     },
+  +     {
+  +       category: 'resgate',
+  +       chapter: 1,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Comandante Helena Vance',
+  +       id: 'm02_socorro_canal',
+  +       narrativeClue: 'clue_nereus_blackbox',
+  +       objectiveText: 'Navegue até a Barcaça Abandonada Nereus-04 para investigar.',
+  +       order: 2,
+  +       requiredMissionIds: [
+  +         'm01_entrega_boia'
+  +       ],
+  +       returnToPortRequired: true,
+  +       rewardCredits: 480,
+  +       status: 'available',
+  +       summary: 'O rádio VHF captou um pedido de socorro vindo de uma embarcação à deriva na saída sul do canal. Investigue o casco abandonado e recupere qualquer registro sobre a organização Nereus.',
+  +       title: 'Cap. 1.2 · O Sinal do Atlântico (Barcaça Nereus-04)',
+  +       unlocksMissionIds: [
+  +         'm03_mergulho_destrocos',
+  +         'm04_patrulha_guaruja'
+  +       ],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           grantsItemId: 'clue_nereus_blackbox',
+  +           id: 'wp_nereus_barge',
+  +           label: 'Barcaça Abandonada Nereus-04',
+  +           radiusM: 36,
+  +           x: 215,
+  +           z: 610
+  +         }
+  +       ]
+  +     },
+  +     {
+  +       category: 'recuperacao',
+  +       chapter: 1,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Comandante Helena Vance',
+  +       id: 'm03_mergulho_destrocos',
+  +       narrativeClue: 'clue_nereus_capsule',
+  +       objectiveText: 'Navegue até os Destroços da Laje Norte (-210, 520) e mergulhe para coletar a cápsula.',
+  +       order: 3,
+  +       requiredMissionIds: [
+  +         'm02_socorro_canal'
+  +       ],
+  +       returnToPortRequired: true,
+  +       rewardCredits: 650,
+  +       status: 'available',
+  +       summary: 'A Caixa-Preta aponta uma carga ejetada pela Nereus junto aos destroços da Laje Norte. Use equipamento de mergulho para descer ao fundo do mar, recuperar a Cápsula de Dados e trazê-la ao porto.',
+  +       title: 'Cap. 1.3 · Segredos Sob a Laje Norte',
+  +       unlocksMissionIds: [
+  +         'm05_pesquisa_palmas'
+  +       ],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           grantsItemId: 'clue_nereus_capsule',
+  +           id: 'wp_laje_norte',
+  +           label: 'Destroços Submersos da Laje Norte',
+  +           radiusM: 30,
+  +           requiresDive: true,
+  +           x: -210,
+  +           y: -7.5,
+  +           z: 520
+  +         }
+  +       ]
+  +     },
+  +     {
+  +       category: 'patrulha',
+  +       chapter: 1,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Quadro de Missões Portuário',
+  +       id: 'm04_patrulha_guaruja',
+  +       objectiveText: 'Percorra os 3 pontos de patrulhamento na Baía de Santos.',
+  +       order: 4,
+  +       requiredMissionIds: [
+  +         'm01_entrega_boia'
+  +       ],
+  +       returnToPortRequired: false,
+  +       rewardCredits: 450,
+  +       status: 'available',
+  +       summary: 'Verifique o tráfego costeiro entre a travessia das balsas no Guarujá, a ponta do canal e o fundeadouro de Santos.',
+  +       title: 'Patrulha do Canal de Santos & Guarujá',
+  +       unlocksMissionIds: [],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           id: 'wp_p1',
+  +           label: 'Balsa Guarujá (Margem Leste)',
+  +           radiusM: 42,
+  +           x: 260,
+  +           z: 40
+  +         },
+  +         {
+  +           completed: false,
+  +           id: 'wp_p2',
+  +           label: 'Entrada da Barra Sul',
+  +           radiusM: 42,
+  +           x: 160,
+  +           z: 420
+  +         },
+  +         {
+  +           completed: false,
+  +           id: 'wp_p3',
+  +           label: 'Fundeadouro Ponta da Praia',
+  +           radiusM: 42,
+  +           x: -60,
+  +           z: 240
+  +         }
+  +       ]
+  +     },
+  +     {
+  +       category: 'pesquisa',
+  +       chapter: 1,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Quadro de Missões Portuário',
+  +       id: 'm05_pesquisa_palmas',
+  +       objectiveText: 'Navegue até a Estação de Pesquisa Marítima Sul e retorne ao Porto de Santos.',
+  +       order: 5,
+  +       requiredMissionIds: [
+  +         'm02_socorro_canal'
+  +       ],
+  +       returnToPortRequired: true,
+  +       rewardCredits: 540,
+  +       status: 'available',
+  +       summary: 'Realize medições hidrográficas próximo ao setor sul rumo à Ilha das Palmas e retorne com os dados coletados ao cais.',
+  +       title: 'Pesquisa Marítima · Correntes da Ilha das Palmas',
+  +       unlocksMissionIds: [],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           id: 'wp_palmas_station',
+  +           label: 'Estação Oceanográfica Baía Sul',
+  +           radiusM: 48,
+  +           x: -360,
+  +           z: 860
+  +         }
+  +       ]
+  +     },
+  +     {
+  +       category: 'exploracao',
+  +       chapter: 2,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Mercador Bento & Clara',
+  +       id: 'm06_primeira_pescaria',
+  +       objectiveText: 'Compre uma vara, pesque um peixe (tecla P ou botão Pescar) e venda no Mercado.',
+  +       order: 6,
+  +       requiredMissionIds: [],
+  +       returnToPortRequired: true,
+  +       rewardCredits: 260,
+  +       status: 'available',
+  +       summary: 'Adquira uma vara de pesca na loja da Clara, saia para as águas do canal ou píer, capture pelo menos um peixe e venda sua captura no Mercado do Bento.',
+  +       title: 'Missão 1 · Primeira Pescaria Costeira',
+  +       unlocksMissionIds: [
+  +         'm07_ecos_do_fundo'
+  +       ],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           id: 'wp_pesca_zona',
+  +           label: 'Área de Pesca do Canal (Capture 1 peixe)',
+  +           radiusM: 65,
+  +           x: 68,
+  +           z: 145
+  +         }
+  +       ]
+  +     },
+  +     {
+  +       category: 'investigacao',
+  +       chapter: 2,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Comandante Helena Vance',
+  +       id: 'm07_ecos_do_fundo',
+  +       objectiveText: 'Navegue até a Caverna Submarina (-145, 290) e recupere a pista submersa.',
+  +       order: 7,
+  +       requiredMissionIds: [
+  +         'm06_primeira_pescaria'
+  +       ],
+  +       returnToPortRequired: true,
+  +       rewardCredits: 520,
+  +       status: 'available',
+  +       summary: 'Um eco acústico foi registrado próximo à Caverna Submarina da Ponta Grossa. Mergulhe ou aproxime-se do setor costeiro e recupere o instrumento histórico submerso.',
+  +       title: 'Missão 2 · Ecos do Fundo',
+  +       unlocksMissionIds: [
+  +         'm08_nereid_s1'
+  +       ],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           grantsItemId: 'relic_maritime_compass',
+  +           id: 'wp_caverna_ecos',
+  +           label: 'Caverna Submarina Ponta Grossa',
+  +           radiusM: 32,
+  +           requiresDive: true,
+  +           x: -145,
+  +           y: -11.5,
+  +           z: 290
+  +         }
+  +       ]
+  +     },
+  +     {
+  +       category: 'pesquisa',
+  +       chapter: 2,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Eng. Tomás Braga',
+  +       id: 'm08_nereid_s1',
+  +       objectiveText: 'Desça com o NEREID S-1 até a Estação Abissal (120, 720, prof. > 16 m).',
+  +       order: 8,
+  +       requiredMissionIds: [
+  +         'm07_ecos_do_fundo'
+  +       ],
+  +       returnToPortRequired: true,
+  +       rewardCredits: 780,
+  +       status: 'available',
+  +       summary: 'Adquira ou ative o submersível NEREID S-1 na Concessionária Naval e realize uma inspeção profunda na Fossa Externa usando o sonar ativo e os faróis.',
+  +       title: 'Missão 3 · O Submersível NEREID S-1',
+  +       unlocksMissionIds: [
+  +         'm09_aguas_perigosas',
+  +         'm10_navio_desaparecido'
+  +       ],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           id: 'wp_fossa_nereid',
+  +           label: 'Fossa Submarina Nereus (Prof. 18 m)',
+  +           radiusM: 42,
+  +           requiresDive: true,
+  +           x: 120,
+  +           y: -18,
+  +           z: 720
+  +         }
+  +       ]
+  +     },
+  +     {
+  +       category: 'patrulha',
+  +       chapter: 2,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Comandante Helena Vance',
+  +       id: 'm09_aguas_perigosas',
+  +       objectiveText: 'Atravesse o Corredor Sul sob risco pirata e retorne ao Porto de Santos.',
+  +       order: 9,
+  +       requiredMissionIds: [
+  +         'm07_ecos_do_fundo'
+  +       ],
+  +       returnToPortRequired: true,
+  +       rewardCredits: 840,
+  +       status: 'available',
+  +       summary: 'Escolte a rota do comboio costeiro pela zona de atuação dos Corsários da Barra. Use velocidade, neblina ou armamento defensivo para cruzar os dois pontos de risco.',
+  +       title: 'Missão 4 · Águas Perigosas (Escolta)',
+  +       unlocksMissionIds: [],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           id: 'wp_escort_1',
+  +           label: 'Comboio · Canal Externo Leste',
+  +           radiusM: 52,
+  +           x: 340,
+  +           z: 620
+  +         },
+  +         {
+  +           completed: false,
+  +           id: 'wp_escort_2',
+  +           label: 'Comboio · Saída Parcel das Palmas',
+  +           radiusM: 52,
+  +           x: 420,
+  +           z: 860
+  +         }
+  +       ]
+  +     },
+  +     {
+  +       category: 'recuperacao',
+  +       chapter: 2,
+  +       currentWaypointIndex: 0,
+  +       giverNpc: 'Comandante Helena Vance',
+  +       id: 'm10_navio_desaparecido',
+  +       narrativeClue: 'clue_nereus_blackbox',
+  +       objectiveText: 'Localize o Naufrágio Profundo Nereus-Alpha (-280, 880) abaixo de 18 m.',
+  +       order: 10,
+  +       requiredMissionIds: [
+  +         'm08_nereid_s1'
+  +       ],
+  +       returnToPortRequired: true,
+  +       rewardCredits: 1150,
+  +       status: 'available',
+  +       summary: 'Sinais de sonar indicam os destroços profundos de uma embarcação desaparecida ligada ao projeto Nereus em -280, 880 (24 m de profundidade). Investigue com o NEREID S-1.',
+  +       title: 'Missão 5 · O Navio Desaparecido (Nereus)',
+  +       unlocksMissionIds: [],
+  +       waypoints: [
+  +         {
+  +           completed: false,
+  +           grantsItemId: 'clue_nereus_blackbox',
+  +           id: 'wp_naufragio_alpha',
+  +           label: 'Naufrágio Profundo Nereus-Alpha (-24 m)',
+  +           radiusM: 46,
+  +           requiresDive: true,
+  +           x: -280,
+  +           y: -22,
+  +           z: 880
+  +         }
+  +       ]
+  +     }
+  +   ],
+  +   ownedVessels: [
+  +     {
+  +       condition: {
+  +         batteryPct: 98,
+  +         fuelPct: 100,
+  +         hullIntegrityPct: 100,
+  +         moored: true,
+  +         subsystems: {
+  +           enginePct: 100,
+  +           hullPct: 100,
+  +           mastPct: 100,
+  +           rudderPct: 100,
+  +           sailsPct: 100
+  +         }
+  +       },
+  +       customName: 'Aster S-01',
+  +       hullColorHex: 15131868,
+  +       instanceId: 'vessel_aster_starter',
+  +       parkedPort: 'Porto de Santos',
+  +       specId: 'aster_s01',
+  +       trimColorHex: 1981004,
+  +       upgrades: {
+  +         cargoHoldLevel: 1,
+  +         engineLevel: 1,
+  +         hullArmorLevel: 1,
+  +         lightingLevel: 1,
+  +         propellerLevel: 1,
+  +         sailRigLevel: 1,
+  +         sonarLevel: 1,
+  +         weaponLevel: 0
+  +       }
+  +     }
+  +   ],
+  +   playerPos: {
+  +     headingRad: 1.5707963267948966,
+  +     x: -24,
+  +     y: 1.48,
+  +     z: 9.5
+  +   },
+  +   progression: {
+  +     diving: {
+  +       level: 1,
+  +       nextLevelXp: 100,
+  +       xp: 0
+  +     },
+  +     exploration: {
+  +       level: 1,
+  +       nextLevelXp: 100,
+  +       xp: 0
+  +     },
+  +     fishing: {
+  +       level: 1,
+  +       nextLevelXp: 100,
+  +       xp: 0
+  +     },
+  +     mechanics: {
+  +       level: 1,
+  +       nextLevelXp: 100,
+  +       xp: 0
+  +     },
+  +     navigation: {
+  +       level: 1,
+  +       nextLevelXp: 100,
+  +       xp: 0
+  +     },
+  +     submarine: {
+  +       level: 1,
+  +       nextLevelXp: 100,
+  +       xp: 0
+  +     }
+  +   },
+  +   savedAt: 1794535428201,
+  +   storyCluesFound: [],
+  +   submarineState: undefined,
+  +   subsystems: {
+  +     enginePct: 100,
+  +     hullPct: 100,
+  +     mastPct: 100,
+  +     rudderPct: 100,
+  +     sailsPct: 100
+  +   },
+  +   version: 2,
+  +   vesselPos: {
+  +     headingDeg: 172,
+  +     moored: true,
+  +     x: 16.5,
+  +     z: 12
+  +   }
+  + }
+  - null
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:13:95)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: {
+      version: 2,
+      savedAt: 1794535428201,
+      chapterTitle: 'Capítulo 1–2 · Vida Marinha, Submersíveis & Piratas',
+      controlMode: 'on_foot',
+      playerPos: { x: -24, y: 1.48, z: 9.5, headingRad: 1.5707963267948966 },
+      vesselPos: { x: 16.5, z: 12, headingDeg: 172, moored: true },
+      fuelPct: 100,
+      batteryPct: 98,
+      subsystems: { hullPct: 100, enginePct: 100, rudderPct: 100, mastPct: 100, sailsPct: 100 },
+      economy: { credits: 450, upgrades: [Object], maxCargoKg: 120, inventory: [Array], equippedIds: [] },
+      missions: [
+        [Object], [Object],
+        [Object], [Object],
+        [Object], [Object],
+        [Object], [Object],
+        [Object], [Object]
+      ],
+      storyCluesFound: [],
+      collectedUnderwaterIds: [],
+      fishingCatches: [],
+      fishingTotalCaught: 0,
+      fishingTotalSoldCr: 0,
+      activeVesselId: 'vessel_aster_starter',
+      ownedVessels: [ [Object] ],
+      progression: { navigation: [Object], fishing: [Object], diving: [Object], exploration: [Object], mechanics: [Object], submarine: [Object] },
+      submarineState: undefined
+    },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/tests/regressions.test.ts:1:1192
+✖ save fills incomplete owned vessel conditions and clamps upgrade values (4.939884ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(ship.condition&&Number.isFinite(ship.condition.fuelPct))
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:14:284)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at src/tests/regressions.test.ts:1:1630
+✖ save excludes malformed catches and prevents NaN progression/submarine values (0.507413ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 0
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:15:352)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/tests/regressions.test.ts:1:2243
+✖ save keeps only catalog inventory items with positive integer quantities (1.021555ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      {
+        itemId: 'equip_diver_mask',
+  +     quantity: 2.8
+  -     quantity: 2
+      },
+  +   {
+  +     itemId: 'unknown',
+  +     quantity: 3
+  +   }
+    ]
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:16:299)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ { itemId: 'equip_diver_mask', quantity: 2.8 }, { itemId: 'unknown', quantity: 3 } ],
+    expected: [ { itemId: 'equip_diver_mask', quantity: 2 } ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at src/tests/regressions.test.ts:1:2599
+✖ underwater saves resume swimming instead of walking below sea level (0.473651ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'on_foot'
+  - 'swimming'
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:17:197)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'on_foot',
+    expected: 'swimming',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/tests/regressions.test.ts:1:2833
+✖ geolocation ignores a delayed success after tracking is stopped (0.645791ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  2 !== 1
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:18:561)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 2,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/tests/regressions.test.ts:1:3403
+✖ synchronous permission denial also clears watch ID zero (0.415425ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   0
+  - ]
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:19:419)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 0 ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at src/tests/regressions.test.ts:1:3802
+✖ regional world does not contact map servers without explicit opt-in (42.220423ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  9 !== 0
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:20:364)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 9,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/tests/regressions.test.ts:1:4284
+✖ floating origin keeps global sector keys stable instead of loading duplicate regions (15.160634ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  15 !== 9
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:21:477)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 15,
+    expected: 9,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at src/tests/regressions.test.ts:1:4839
+✖ pending map responses cannot resurrect geometry after disposal (17.173109ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  9 !== 0
+  
+      at TestContext.<anonymous> (/workspace/scratch/4cb682048779/uploaded-review/src/tests/regressions.test.ts:22:584)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 9,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

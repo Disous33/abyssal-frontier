@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@import "@fontsource/outfit/latin-500.css";
+@import "@fontsource/outfit/latin-600.css";
+@import "@fontsource/outfit/latin-700.css";
+@import "@fontsource/plus-jakarta-sans/latin-400.css";
+@import "@fontsource/plus-jakarta-sans/latin-500.css";
+@import "@fontsource/plus-jakarta-sans/latin-600.css";
+@import "@fontsource/jetbrains-mono/latin-400.css";
+@import "@fontsource/jetbrains-mono/latin-500.css";
+@import "@fontsource/jetbrains-mono/latin-600.css";
+
+@layer base {
+  :root {
+    --font-display: 'Outfit', system-ui, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: var(--font-sans);
+    background-color: #06131c;
+    color: #e6eef4;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom sleek maritime scrollbars for lab drawer */
+.naval-scroll::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.naval-scroll::-webkit-scrollbar-track {
+  background: rgba(8, 22, 33, 0.6);
+}
+.naval-scroll::-webkit-scrollbar-thumb {
+  background: rgba(56, 130, 160, 0.45);
+  border-radius: 3px;
+}
+.naval-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 155, 38, 0.7);
+}
+
+/* Range input styling for naval instruments */
+input[type='range'].naval-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(148, 163, 184, 0.24);
+  outline: none;
+}
+input[type='range'].naval-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: #d99b26;
+  border: 1px solid #fef3c7;
+  cursor: pointer;
+}
+input[type='range'].naval-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background: #d99b26;
+  border: 1px solid #fef3c7;
+  cursor: pointer;
+}
