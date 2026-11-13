@@ -1,0 +1,32 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> abyssal-frontier@0.0.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 1733 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/manifest.webmanifest                            0.57 kB
+dist/index.html                                      2.32 kB │ gzip:     1.00 kB
+dist/assets/index-LqHLphMx.css                      45.89 kB │ gzip:     8.45 kB
+dist/assets/rolldown-runtime-XKyaHtl9.js             0.72 kB │ gzip:     0.42 kB
+dist/assets/workbox-window.prod.es5-Bd17z0YL.js      5.65 kB │ gzip:     2.20 kB
+dist/assets/three-Bx1WUM1y.js                      615.39 kB │ gzip:   153.61 kB
+dist/assets/index-DtcsBhLq.js                      698.12 kB │ gzip:   204.92 kB
+dist/assets/rapier-8Y7Ja17T.js                   4,332.90 kB │ gzip: 1,669.35 kB
+
+✓ built in 398ms
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+PWA v2.0.0
+mode      generateSW
+precache  18 entries (5587.04 KiB)
+files generated
+  dist/sw.js
+  dist/workbox-9c191d2f.js

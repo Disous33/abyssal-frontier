@@ -1,0 +1,14 @@
+[PASS] Ondas de Gerstner (Altura, Normais Unitárias & Velocidade Orbital) — Amplitude validada [-0.64m, +0.74m], normais unitárias.
+[PASS] Vento Aparente & Cisalhamento Vertical — Vento verdadeiro 15 kts + avanço 5 m/s => aparente 24.1 kts.
+[PASS] Aerodinâmica (Zona de Não Navegação vs Vento de Través) — Proa ao vento: luff 100%; Través: empuxo +1520 N.
+[PASS] Flutuação Rapier 3D & Estabilidade Prolongada (3.600 steps / 60s) — Velocidade 2.6 kts, Roll 40.3°, Empuxo 32.4 kN.
+[PASS] Projeção Geográfica WGS84 ENU & Origem Flutuante (Baixada Santista) — Guarujá X=+814m, Ilha das Palmas 3043m, erro ida-volta 0.00000m.
+[PASS] Controlador Kael Rivera (Terra, Natação & Mergulho com Oxigênio) — Caminhada +4m em 1s; Mergulho a 4.4m com consumo de O2 (43.4s/45s).
+[PASS] MissionManager (Capítulo 1: Aceitar, Waypoints, Retorno & Cancelamento) — Fluxo completo validado: m01 entregue/retornada, m02 desbloqueada e cancelamento testado.
+[PASS] Economia, Limite de Carga, Upgrades & Sistema de Avarias — Equipamento, bloqueio de sobrecarga (>120kg), upgrade Porão 220kg, dano por colisão (-11.6% casco) validados.
+[PASS] Tráfego Marítimo IA, Eventos Dinâmicos & Save Versionado — 5 navios NPC ativos, evento "Embarcação Suspeita (Sinal Nereus)" gerado/resolvido, migração/sanitização de save validada.
+[PASS] v0.6 Gráficos, Espectro 8 Ondas, Presets de Iluminação & Perfis — 8 ondas Gerstner, 6 presets de iluminação (noite visível ambient=0.56), 4 perfis escaláveis validados.
+[PASS] v0.7 FishingSystem (Arremesso, Fisgada, Tensão & Reserva Laje Norte) — Captura "Pescada-Branca" (2.8kg), venda +107 CR e soltura protegida validados.
+[PASS] v0.7 Submersível NEREID S-1 (Lastro, Pressão & Sonar Ativo) — Profundidade 11.4m (2.10 atm), bateria 98.0%, contato sonar real detectado.
+[PASS] v0.7 Frota Naval (6 Embarcações), Upgrades & Progressão de Habilidades — 6 classes catalogadas, Atlas T-2 porão 520kg, Pesca Nv.3 validados.
+[PASS] v0.7 Piratas (IA, Pedágio 120 CR, Evasão) & Migração Save v1→v2 — IA pirata "Escuna Lacraia" reagiu (intimidate), recuo por pedágio (retreat) e migração Save v1→v2 validados.
