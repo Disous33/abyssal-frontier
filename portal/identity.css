@@ -1,0 +1,149 @@
+/* ABYSSAL FRONTIER — editorial identity / 2026 */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--accent:#deb783;--bg:#081b24;--ice:#f4eee3;--muted:#b9c1be;--line:#ffffff32}
+html{scroll-padding-top:70px}body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--ice)}
+#oceanCanvas{filter:saturate(.78) contrast(1.045)}
+#shade{background:linear-gradient(90deg,rgba(3,21,30,.95) 0%,rgba(3,21,30,.70) 28%,rgba(3,21,30,.10) 79%),linear-gradient(0deg,rgba(2,18,25,.96) 0%,transparent 48%);transition:background .5s}
+body.playing #shade{background:linear-gradient(0deg,rgba(6,15,18,.25),transparent 34%)}
+.grain{opacity:.19}
+#landing{min-height:100vh}
+.site-nav{position:relative;z-index:5;display:flex;justify-content:space-between;align-items:center;min-height:94px;padding:0 clamp(24px,5.2vw,92px);background:none;border-bottom:1px solid rgba(240,234,215,.26)}
+.site-brand{display:inline-flex;align-items:center;gap:14px;font:800 16px/1.06 "Manrope",sans-serif;letter-spacing:.045em;flex-shrink:0}
+.site-brand b{font-weight:800;color:#f1e9d7}.site-brand small{display:block;font:600 8px/1.6 "Manrope",sans-serif;letter-spacing:.27em;color:#e7c898;margin-top:6px}
+.brand-signet{width:38px;height:38px;display:block;border:1px solid #e5d9c588;border-radius:50%;position:relative;flex-shrink:0}
+.brand-signet:before,.brand-signet:after{position:absolute;content:"";display:block}.brand-signet:before{left:8px;right:8px;top:17px;border-top:1px solid #f1e6d1;transform:rotate(-35deg)}
+.brand-signet:after{width:6px;height:6px;top:7px;right:8px;border-radius:50%;background:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:clamp(25px,3.4vw,56px)}
+.nav-right>a:not(.nav-action){font:600 12px "DM Sans",sans-serif;letter-spacing:.01em;color:#e1e5dd;opacity:.92;transition:opacity .25s}
+.nav-right>a:not(.nav-action):hover{opacity:1;color:#fff}
+.nav-action{padding:11px 0;border-bottom:1px solid var(--accent);font:700 12px "DM Sans",sans-serif;display:inline-flex;align-items:center;gap:22px}
+.nav-action span{font-size:18px;color:var(--accent)}
+.edition-corner{display:flex;align-items:center;gap:8px;color:#ded6c4;font:600 9px/1.4 "DM Sans",sans-serif;letter-spacing:.1em;white-space:nowrap}
+.edition-dot{width:6px;height:6px;background:#dbbc8d;border-radius:50%}
+.stage{min-height:calc(100svh - 94px);padding:clamp(45px,7vh,82px) clamp(24px,5.2vw,92px) 31px;display:flex;flex-direction:column;justify-content:space-between;position:relative;max-width:none}
+.stage-number{display:flex;align-items:center;gap:17px;font-size:11px;color:#c7d2cd;letter-spacing:.095em}
+.stage-number .rule{height:1px;width:45px;background:#d8d8ca77}
+.stage-center{margin-top:clamp(30px,5vh,78px);width:min(950px,100%)}
+.stage-kicker{font:700 11px "DM Sans",sans-serif;letter-spacing:.24em;color:#e2d1b8;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.stage-kicker:before{content:"";height:5px;width:5px;border-radius:50%;background:var(--accent)}
+.stage h1{font:800 clamp(65px,9.6vw,172px)/.88 "Manrope",sans-serif;letter-spacing:-.086em;text-transform:none;margin:22px 0 0;max-width:1100px;text-shadow:0 5px 27px #07182055}
+.stage h1 span{display:block;font-weight:800;padding-left:.01em}
+.stage-quote{margin:30px 0 0;max-width:500px;color:#efe7d9;font:400 clamp(27px,3.45vw,52px)/1.08 "Instrument Serif",Georgia,serif;letter-spacing:.007em}
+.stage-quote em{font-style:italic;color:#eac395}
+.stage-floor{display:flex;align-items:flex-end;justify-content:space-between;gap:35px;margin-top:45px;max-width:1180px}
+.stage-intro{max-width:500px}
+.stage-intro>p{margin:0 0 25px;color:#d5ded9;font:400 13px/1.8 "DM Sans",sans-serif;max-width:480px}
+.stage-actions{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.expedition-btn{background:#e5c08c;color:#1d2a25;min-height:55px;display:inline-flex;align-items:center;justify-content:space-between;gap:38px;padding:0 20px 0 24px;border:1px solid #e5c08c;font:800 12px "DM Sans",sans-serif;transition:background .2s,transform .2s}
+.expedition-btn span{font-size:22px;font-weight:400}
+.expedition-btn:hover{background:#f8d6a7;transform:translateY(-2px)}
+.underlink{display:inline-flex;gap:13px;align-items:center;font-size:12px;font-weight:600;border-bottom:1px solid #e8e5d985;padding-bottom:6px}
+.underlink:after{content:"↗";font-size:17px;color:var(--accent)}
+.underlink:hover{color:var(--accent)}
+.stage-side{border-left:1px solid #e6dfcd6b;padding-left:20px;min-width:150px}
+.stage-side span,.stage-side strong{display:block}
+.stage-side span{font-size:10px;letter-spacing:.1em;color:#acbfba}
+.stage-side strong{font:600 13px/1.7 "Manrope",sans-serif;margin-top:6px}
+.stage-base{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:clamp(50px,8vh,90px);padding-top:18px;border-top:1px solid #e4e4d14d;font:600 9px/1.6 "DM Sans",sans-serif;letter-spacing:.15em;color:#c5d0c8}
+.stage-base a{display:inline-flex;gap:13px;align-items:center}.stage-base a:hover{color:white}
+.wave-label{font:400 17px "Instrument Serif",serif;letter-spacing:0;color:#e2cdac}
+.editorial-section{position:relative;z-index:3;background:#f1ece1;color:#1a2d33;padding:100px clamp(24px,5.2vw,92px)}
+.editorial-section .section-wrap{max-width:1390px;margin:auto}
+.chapter-head{display:flex;gap:22px;align-items:center;font:700 10px "DM Sans",sans-serif;letter-spacing:.17em;text-transform:uppercase;color:#5f7475}
+.chapter-head .chapter-line{height:1px;flex:1;max-width:90px;background:#75888890}
+.chapter-head .chapter-aside{margin-left:auto;color:#74817f}
+.editorial-section h2{font:600 clamp(48px,7vw,100px)/1.02 "Manrope",sans-serif;letter-spacing:-.075em;margin:42px 0 25px;max-width:910px}
+.editorial-section h2 em{font:400 1.13em/.9 "Instrument Serif",serif;letter-spacing:0;color:#87765c;white-space:nowrap}
+.editorial-section p{font:400 15px/1.85 "DM Sans",sans-serif;color:#526467;max-width:550px}
+.story-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(270px,.7fr);align-items:center;gap:clamp(30px,8vw,140px)}
+.story-copy{padding-top:13px}
+.story-note{align-self:stretch;min-height:440px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:30px 0 0;border-top:1px solid #6b7e7950}
+.story-note .map-art{position:absolute;inset:28px 0 95px;overflow:hidden;background:repeating-radial-gradient(ellipse at 57% 47%,transparent 0,transparent 20px,#9caeaa4b 21px,#9caeaa4b 22px,transparent 23px,transparent 38px)}
+.map-art .compass-circle{height:130px;width:130px;border:1px solid #596f6a82;border-radius:50%;position:absolute;top:calc(48% - 65px);left:calc(56% - 65px)}
+.map-art .compass-circle:before{content:"";position:absolute;inset:-25px 50%;width:1px;background:#627a7580}.map-art .compass-circle:after{content:"";position:absolute;inset:50% -25px;height:1px;background:#627a7580}
+.map-art .compass-point{position:absolute;left:calc(56% - 26px);top:calc(48% - 48px);height:96px;width:52px;clip-path:polygon(50% 0,64% 47%,50% 100%,36% 53%);background:#856f54}
+.map-art .north{font:800 12px "DM Sans",sans-serif;position:absolute;left:calc(56% - 5px);top:calc(48% - 89px);color:#314c4a}
+.story-note>small{font:800 10px "DM Sans",sans-serif;letter-spacing:.17em;color:#435c5a}
+.story-note>p{margin:12px 0 0;font:400 26px/1.1 "Instrument Serif",serif;color:#39514f}
+.journal-section{background:#10252b;color:#f5efe5}
+.journal-section .chapter-head{color:#b4c4bf}.journal-section .chapter-line{background:#879b9966}.journal-section .chapter-aside{color:#aebfbc}
+.journal-section h2{max-width:790px;color:#f3eee6}.journal-section h2 em{color:#e2bc87}
+.journal-intro{margin-bottom:36px!important;color:#b6c9c6!important}
+.journal-list{border-top:1px solid #e4e3d53c;display:flex;flex-direction:column;margin-top:55px}
+.journal-row{display:grid;grid-template-columns:90px minmax(0,1fr) minmax(210px,1fr) 120px;align-items:center;gap:25px;padding:30px 10px 30px 0;border-bottom:1px solid #e4e3d53c}
+.journal-n{color:#cfba9b;font:400 22px "Instrument Serif",serif}
+.journal-name{font:600 clamp(20px,2.5vw,34px)/1.1 "Manrope",sans-serif;letter-spacing:-.045em}
+.journal-row p{font-size:13px;line-height:1.7;color:#b9cac7;margin:0}
+.journal-tag{font:700 9px "DM Sans",sans-serif;letter-spacing:.07em;color:#e6c595;text-align:right}
+.journal-tag.muted{color:#849995}
+.controls-section{background:#e5ddd0}
+.controls-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.controls-section h2{font-size:clamp(52px,6vw,85px)}
+.controls-section .expedition-btn{background:#1a3438;border-color:#1a3438;color:#f4ede0;margin-top:25px}
+.controls-section .expedition-btn:hover{background:#305458}
+.control-list{border-top:1px solid #687b7970;margin-top:52px}
+.control-line{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid #687b7970;padding:18px 2px;color:#334d4e;font-size:13px}
+.control-line kbd{font:700 12px "DM Sans",sans-serif;color:#2a4546;border:1px solid #68817f78;min-width:58px;text-align:center;padding:9px 14px}
+.site-footer{background:#071920;color:#9eadac;padding:34px clamp(24px,5.2vw,92px);display:flex;justify-content:space-between;align-items:center;gap:24px;position:relative;z-index:3;font-size:11px;letter-spacing:.025em;border-top:none}
+.site-footer a{color:#f3dfc2;border-bottom:1px solid #9d8a70;padding-bottom:4px}
+.site-footer strong{color:#f5eee2}
+.site-footer .foot-micro{display:block;margin-top:7px;color:#92a9a7;font-size:10px}
+body.playing .hud-brand{font-family:"Manrope",sans-serif;letter-spacing:-.04em;font-size:19px}
+body.playing .hud-brand span{color:#e7c18a}
+body.playing .glass{background:#071c24ce;border:1px solid #efdfbf50;backdrop-filter:blur(18px);border-radius:2px}
+body.playing .kicker{color:#e6bf87}
+body.playing .quest strong{font-family:"Manrope",sans-serif;font-size:18px;letter-spacing:-.045em;line-height:1.25}
+body.playing .telemetry .speed{font-family:"Manrope",sans-serif;font-weight:700;letter-spacing:-.08em;font-size:60px}
+body.playing .telemetry small{color:#e7c18a}
+body.playing .progress span.done{background:#e6bd82}
+body.playing #toast{background:#e7c18a;color:#152a2d}
+body.playing .hud-top{background:linear-gradient(#061c24d9,transparent)}
+body.playing #dialog .dialog-card{background:linear-gradient(155deg,#17323a,#091b24);border-color:#c9b89870}
+body.playing #dialog h2{font-family:"Manrope",sans-serif;letter-spacing:-.06em}
+body.playing #dialog .primary{background:#e7c18a;color:#122429}
+body.playing .touch-btn:active,body.playing .touch-btn.holding{background:#b68e5b;color:#0b1b1f}
+@media(max-width:1000px){
+ .edition-corner{display:none}.nav-right{gap:28px}
+ .stage h1{font-size:clamp(69px,10.9vw,125px)}
+ .journal-row{grid-template-columns:38px minmax(0,1fr) minmax(170px,1fr) 85px;gap:16px}
+}
+@media(max-width:700px){
+ .site-nav{padding:0 20px;min-height:70px}
+ .site-brand{font-size:13px;gap:10px}.site-brand small{font-size:7px}
+ .brand-signet{height:32px;width:32px}.brand-signet:before{top:14px}.brand-signet:after{top:6px}
+ .nav-right>a:not(.nav-action){display:none}.nav-right{gap:0}
+ .nav-action{font-size:11px;gap:8px}
+ .stage{padding:34px 22px 24px;min-height:calc(100svh - 70px)}
+ .stage-number{font-size:9px}
+ .stage-center{margin-top:clamp(32px,7vh,75px)}
+ .stage-kicker{font-size:9px;letter-spacing:.18em}
+ .stage h1{font-size:clamp(52px,13.2vw,91px);letter-spacing:-.079em;margin-top:23px;line-height:.94}
+ .stage-quote{font-size:clamp(27px,7.3vw,43px);margin-top:25px}
+ .stage-floor{margin-top:37px}
+ .stage-side{display:none}
+ .stage-intro>p{font-size:12px;line-height:1.7;max-width:340px}
+ .stage-actions{gap:18px}
+ .expedition-btn{min-height:51px;font-size:11px;padding:0 16px 0 18px;gap:19px}
+ .underlink{font-size:11px}
+ .stage-base{font-size:8px;margin-top:35px;letter-spacing:.07em}
+ .stage-base .wave-label{display:none}
+ .editorial-section{padding:73px 23px}
+ .chapter-head{font-size:9px;gap:11px}.chapter-head .chapter-aside{display:none}
+ .editorial-section h2{font-size:clamp(47px,11vw,75px);margin-top:27px}
+ .editorial-section p{font-size:13px}
+ .story-grid,.controls-grid{grid-template-columns:1fr;gap:35px}
+ .story-note{min-height:275px;padding-top:20px}
+ .story-note .map-art{inset:0 0 64px}.story-note>p{font-size:22px}
+ .journal-list{margin-top:35px}
+ .journal-row{grid-template-columns:28px 1fr;gap:9px 15px;padding:22px 0}
+ .journal-n{grid-column:1;grid-row:1}.journal-name{grid-column:2;grid-row:1;font-size:24px}
+ .journal-row p{grid-column:2;grid-row:2;font-size:12px}
+ .journal-tag{grid-column:2;grid-row:3;text-align:left;margin-top:3px}
+ .control-list{margin-top:10px}
+ .site-footer{padding:28px 22px;align-items:start;flex-direction:column;gap:16px;font-size:10px}
+ body.playing .hud-brand{font-size:16px}
+ body.playing .telemetry .speed{font-size:41px}
+ body.playing .quest strong{font-size:15px}
+}
+@media(max-width:375px){.stage h1{font-size:51px}.stage-quote{font-size:27px}.stage-intro>p{font-size:11px}.nav-action{font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition-duration:.01ms!important;animation-duration:.01ms!important}}
