@@ -25,30 +25,92 @@
     @media(max-width:940px){nav a:not(.nav-cta){display:none}.features{grid-template-columns:1fr 1fr}.hero{padding-top:8vh!important}h1{font-size:clamp(78px,13vw,125px)}.hero-copy{max-width:430px}}
     @media(max-width:640px){header{padding:18px 20px}.logo{font-size:18px}.logo-mark{width:28px;height:28px}.logo-mark span{font-size:18px}.nav-cta{font-size:9px;padding:10px}main.hero{padding:10vh 20px 42px!important;min-height:calc(100dvh - 68px)}h1{font-size:clamp(67px,17vw,110px);margin:24px 0 28px}h1 em{margin-top:11px}.hero-copy{font-size:13px;line-height:1.65;max-width:340px}.hero-actions .primary,.hero-actions .secondary{padding:0 19px;min-height:53px;font-size:10px}.hero-meta{gap:26px}.hero-meta b{font-size:20px}.hero-meta small{font-size:8px}.scroll-hint{display:none}.section{padding:65px 20px}.features{grid-template-columns:1fr}.feature{min-height:190px}.key{padding:12px 13px}.hud-top{padding:15px}.hud-brand{font-size:19px}.quest{left:14px;top:81px;max-width:220px;padding:13px 16px}.quest strong{font-size:19px}.quest p{font-size:10px}.quest .kicker{font-size:8px}.mapbox{width:118px;height:118px}.hud-bottom{bottom:155px;left:14px;right:14px}.telemetry{min-width:132px;padding:11px 13px}.telemetry .speed{font-size:45px}.telemetry .details{font-size:8px;gap:10px}.hint{display:none}#touch{display:flex}.dialog-card{padding:29px}.dialog-card h2{font-size:43px}#shade{background:linear-gradient(90deg,rgba(4,14,21,.9),rgba(4,14,21,.22)),linear-gradient(0deg,#081720,transparent 70%)}}
   </style>
+<link rel="stylesheet" href="./identity.css">
 </head>
 <body>
   <canvas id="oceanCanvas" aria-label="Cenário 3D do oceano"></canvas><div id="shade"></div><div class="grain"></div>
   <div id="landing">
-    <header>
-      <a href="#" class="logo" aria-label="Abyssal Frontier"><span class="logo-mark"><span>≈</span></span><span>ABYSSAL <span style="color:var(--accent)">FRONTIER</span></span></a>
-      <nav aria-label="Menu principal"><a href="#universo">O UNIVERSO</a><a href="#controles">CONTROLES</a><a href="https://github.com/Disous33/abyssal-frontier" target="_blank" rel="noopener">DESENVOLVIMENTO</a><a class="nav-cta" href="#" id="navPlay">JOGAR DEMO ↗</a></nav>
-    </header>
-    <main class="hero">
-      <div>
-        <div class="eyebrow">A FRONTEIRA COMEÇA NO MAR · DEMONSTRAÇÃO 3D</div>
-        <h1>ABYSSAL<em>FRONTIER.</em></h1>
-        <p class="hero-copy">O horizonte não é o fim do mundo. É o começo da sua história. Assuma o comando, enfrente as ondas do Atlântico e descubra o que existe além da costa.</p>
-        <div class="hero-actions"><button class="primary" id="playBtn">INICIAR EXPEDIÇÃO <span class="arrow">↗</span></button><a class="secondary" href="#universo">CONHECER O JOGO <span class="arrow">↓</span></a></div>
+    <header class="site-nav">
+      <a href="#" class="site-brand" aria-label="Abyssal Frontier, início">
+        <span class="brand-signet" aria-hidden="true"></span>
+        <span><b>ABYSSAL FRONTIER</b><small>ATLANTIC EXPLORATION PROJECT</small></span>
+      </a>
+      <div class="nav-right">
+        <a href="#universo">A história</a>
+        <a href="#controles">Como jogar</a>
+        <a href="https://github.com/Disous33/abyssal-frontier" target="_blank" rel="noopener">Diário de bordo</a>
+        <a class="nav-action" href="#" id="navPlay">Entrar no jogo <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="hero-foot"><div class="hero-meta"><div><b>3D</b><small>EXPLORAÇÃO NAVAL</small></div><div><b>PC + MOBILE</b><small>JOGUE NO NAVEGADOR</small></div><div><b>GRÁTIS</b><small>DEMONSTRAÇÃO</small></div></div><div class="scroll-hint">ROLE PARA EXPLORAR</div></div>
+    </header>
+    <main class="stage">
+      <div class="stage-number"><span>01 / EXPEDIÇÃO ATLÂNTICA</span><span class="rule"></span><span>VERSÃO DEMONSTRAÇÃO</span></div>
+      <div class="stage-center">
+        <div class="stage-kicker">Um novo horizonte para explorar</div>
+        <h1>Abyssal<span>Frontier.</span></h1>
+        <p class="stage-quote">Há histórias que só o <em>oceano</em> conhece.</p>
+      </div>
+      <div class="stage-floor">
+        <div class="stage-intro">
+          <p>Um barco. O Atlântico inteiro à sua frente. Deixe a costa para trás, assuma o leme e encontre o que ninguém estava procurando.</p>
+          <div class="stage-actions">
+            <button class="expedition-btn" id="playBtn">Começar a expedição <span aria-hidden="true">↗</span></button>
+            <a href="#universo" class="underlink">Descubra o universo</a>
+          </div>
+        </div>
+        <div class="stage-side"><span>LOCAL DE PARTIDA</span><strong>Litoral de Santos<br>Brasil · Atlântico Sul</strong></div>
+      </div>
+      <div class="stage-base"><span>UM PROJETO INDEPENDENTE DE EXPLORAÇÃO NAVAL</span><span class="wave-label">O mar não tem fim.</span><a href="#universo">CONTINUE EXPLORANDO <span aria-hidden="true">↓</span></a></div>
     </main>
-    <section id="universo" class="section"><div class="section-inner"><div class="kicker">01 / O UNIVERSO</div><h2>UM OCEANO DE<br>POSSIBILIDADES.</h2><p>ABYSSAL FRONTIER é um projeto independente de exploração naval em 3D. Neste portal você pode testar uma demonstração de navegação com embarcação controlável e uma missão de reconhecimento marítimo. Os sistemas da versão completa ainda estão em desenvolvimento.</p><div class="features">
-      <div class="feature"><div class="feature-icon">◈</div><h3>NAVEGAÇÃO 3D</h3><p>Comande seu barco, sinta a inércia do leme, explore uma cena oceânica dinâmica e descubra pontos de interesse.</p><span class="muted-pill">DISPONÍVEL NA DEMO</span></div>
-      <div class="feature"><div class="feature-icon">⌁</div><h3>MISSÃO NO ATLÂNTICO</h3><p>Deixe a área portuária e localize três sinais marítimos para concluir a primeira expedição.</p><span class="muted-pill">DISPONÍVEL NA DEMO</span></div>
-      <div class="feature"><div class="feature-icon">◇</div><h3>MUNDO EM EXPANSÃO</h3><p>Portos, economia, pesca, mergulho e aventuras maiores fazem parte dos objetivos do jogo completo.</p><span class="muted-pill">EM DESENVOLVIMENTO</span></div>
-    </div></div></section>
-    <section id="controles" class="section"><div class="section-inner section-split"><div><div class="kicker">02 / COMANDE SUA EXPEDIÇÃO</div><h2>O LEME<br>ESTÁ EM SUAS MÃOS.</h2><p>Navegue com teclado no computador ou use os controles na tela do celular. A demonstração salva apenas suas preferências visuais neste dispositivo.</p><button class="primary" id="playBtn2">JOGAR GRATUITAMENTE <span class="arrow">↗</span></button></div><div class="keys"><div class="key"><span>Acelerar</span><b>W / ↑</b></div><div class="key"><span>Frear / ré</span><b>S / ↓</b></div><div class="key"><span>Leme esquerda</span><b>A / ←</b></div><div class="key"><span>Leme direita</span><b>D / →</b></div><div class="key"><span>Pausar</span><b>ESC</b></div><div class="key"><span>Câmera</span><b>SCROLL</b></div></div></div></section>
-    <footer><div>© 2026 ABYSSAL FRONTIER · PROJETO INDEPENDENTE</div><div>DEMONSTRAÇÃO TÉCNICA · NÃO REPRESENTA A VERSÃO COMPLETA</div><a target="_blank" rel="noopener" href="https://github.com/Disous33/abyssal-frontier">GITHUB ↗</a></footer>
+    <section id="universo" class="editorial-section">
+      <div class="section-wrap story-grid">
+        <div class="story-copy">
+          <div class="chapter-head"><span>CAPÍTULO 01</span><span class="chapter-line"></span><span>O COMEÇO DE TUDO</span></div>
+          <h2>Para além<br>da <em>costa.</em></h2>
+          <p>O mar sempre pertenceu aos curiosos. Abyssal Frontier é uma aventura de exploração naval em desenvolvimento, inspirada na navegação, nos portos brasileiros e na liberdade de seguir o próprio rumo.</p>
+          <p>Nesta demonstração você assume o controle de uma embarcação em um cenário 3D e parte em busca de três sinais perdidos no oceano.</p>
+        </div>
+        <div class="story-note" aria-label="Ilustração abstrata de uma rosa dos ventos">
+          <div class="map-art" aria-hidden="true"><div class="compass-circle"></div><div class="compass-point"></div><span class="north">N</span></div>
+          <small>NOTA DE NAVEGAÇÃO · 001</small>
+          <p>Todo grande caminho<br>começa ao deixar o cais.</p>
+        </div>
+      </div>
+    </section>
+    <section class="editorial-section journal-section" aria-label="Funcionalidades do jogo">
+      <div class="section-wrap">
+        <div class="chapter-head"><span>CAPÍTULO 02</span><span class="chapter-line"></span><span>DIÁRIO DE BORDO</span><span class="chapter-aside">O QUE VOCÊ VAI ENCONTRAR</span></div>
+        <h2>O que espera <em>lá fora.</em></h2>
+        <p class="journal-intro">A aventura começa com uma missão simples. O objetivo é transformar essa primeira viagem em um mundo vivo de descobertas.</p>
+        <div class="journal-list">
+          <div class="journal-row"><span class="journal-n">01</span><span class="journal-name">O primeiro comando</span><p>Assuma o leme, ajuste a velocidade e navegue entre ilhas sob um oceano animado.</p><span class="journal-tag">NA DEMONSTRAÇÃO</span></div>
+          <div class="journal-row"><span class="journal-n">02</span><span class="journal-name">O sinal do Atlântico</span><p>Explore o setor marítimo e encontre três sinais de reconhecimento para completar sua primeira missão.</p><span class="journal-tag">NA DEMONSTRAÇÃO</span></div>
+          <div class="journal-row"><span class="journal-n">03</span><span class="journal-name">Um mundo em movimento</span><p>Portos, pesca, mergulho, economia e outras embarcações fazem parte do projeto maior.</p><span class="journal-tag muted">EM DESENVOLVIMENTO</span></div>
+        </div>
+      </div>
+    </section>
+    <section id="controles" class="editorial-section controls-section">
+      <div class="section-wrap controls-grid">
+        <div>
+          <div class="chapter-head"><span>CAPÍTULO 03</span><span class="chapter-line"></span><span>SEU PRIMEIRO COMANDO</span></div>
+          <h2>O leme é <em>seu.</em></h2>
+          <p>Você não precisa instalar nada. Basta abrir a demonstração no navegador e seguir os sinais no mar. No celular, os controles aparecem na tela.</p>
+          <button class="expedition-btn" id="playBtn2">Partir agora <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="control-list" aria-label="Controles da demonstração">
+          <div class="control-line"><span>Acelerar</span><kbd>W / ↑</kbd></div>
+          <div class="control-line"><span>Frear / Ré</span><kbd>S / ↓</kbd></div>
+          <div class="control-line"><span>Virar para bombordo</span><kbd>A / ←</kbd></div>
+          <div class="control-line"><span>Virar para boreste</span><kbd>D / →</kbd></div>
+          <div class="control-line"><span>Pausar a expedição</span><kbd>Esc</kbd></div>
+          <div class="control-line"><span>Ajustar a câmera</span><kbd>Scroll</kbd></div>
+        </div>
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div><strong>ABYSSAL FRONTIER</strong><span class="foot-micro">© 2026 · Exploração naval independente.</span></div>
+      <div>Um projeto em construção. A demonstração não é o jogo completo.</div>
+      <a href="https://github.com/Disous33/abyssal-frontier" target="_blank" rel="noopener">Acompanhar desenvolvimento ↗</a>
+    </footer>
   </div>
   <div id="hud" aria-live="polite">
     <div class="hud-top"><div><div class="hud-brand">ABYSSAL <span>FRONTIER</span></div><div class="hud-sub">DEMO · SETOR COSTEIRO · ATLÂNTICO</div></div><div class="top-actions"><button id="dayBtn" class="glass icon-btn" title="Alternar dia/noite" aria-label="Alternar dia ou noite">☀</button><button id="soundBtn" class="glass icon-btn" title="Som do oceano" aria-label="Alternar som">♫</button><button id="pauseBtn" class="glass icon-btn" title="Pausar" aria-label="Pausar">Ⅱ</button></div></div>
